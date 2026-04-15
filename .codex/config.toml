@@ -1,0 +1,25 @@
+# Project-scoped Codex settings for stackyard.
+# Loaded because ~/.codex/config.toml marks this project as trusted.
+
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+default_permissions = "stackyard"
+
+[sandbox_workspace_write]
+# Keep edits inside this workspace, with temporary directories available for
+# build/test output. Network stays off unless a command is explicitly approved.
+writable_roots = [
+  "/tmp",
+  "/var/folders/m8/fmjs18gj0_9c8pr6lgp365pr0000gn/T",
+]
+network_access = false
+exclude_slash_tmp = false
+exclude_tmpdir_env_var = false
+
+[permissions.stackyard.filesystem]
+":project_roots" = { "." = "write" }
+"/tmp" = "write"
+"/var/folders/m8/fmjs18gj0_9c8pr6lgp365pr0000gn/T" = "write"
+
+[permissions.stackyard.network]
+enabled = false
